@@ -1,0 +1,35 @@
+0;136;0c# File:        palindrome.py
+# Author:      Joby Tanseco
+# Date:        10/11/2016
+# Section:     18
+# E-mail:      tanseco1@umbc.edu
+# Description: This program checks if a string is a palindrome
+#              YOUR DESCRIPTION CONTINUED SOME MORE
+# Collaboration: During lab, collaboration between students is allowed,
+#                although I understand I still must understand the material
+#                and complete the assignment myself. 
+
+
+def main():
+
+    #Asks user for string
+    word = input("Please enter a word: ")
+    wordList = []
+    
+    #Makes new list
+    for i in word:
+        wordList.append(i)
+
+
+    #makes backwards list
+    wordList2 = []
+    for x in range(-1, (len(word) + 1) * -1, -1):
+        wordList2.append(word[x])
+
+    if wordList2 == wordList:
+        print(word, " is a palindrome.")
+
+    else:
+        print(word, " is not a palindrome.")
+
+main()

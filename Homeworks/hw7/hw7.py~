@@ -1,0 +1,194 @@
+# File: hw7.py
+# Author: Joshua Julian Tanseco
+# Date: 11/1/16
+# Section: 18
+# E-mail: tanseco1@umbc.edu
+# Description:
+# This program gets a list from the user and checks the list
+# Collaboration:
+# I did not collaborate with anyone on this assignment
+
+#Min and Max for inputs
+MIN = 1
+MAX = 5
+
+#sets constants for options
+CREATE_A_LIST = 1
+CHECK_SAME = 2
+CHECK_DIFFERENT = 3
+CHECK_SORTED = 4
+EXIT = 5
+
+
+# createIntList() creates a list of integers
+# Input:          an integer; the sentinel value
+# Output:         a list of integers
+def createIntList(sentinel):
+
+
+    #creates empty list
+    numList = [0]
+    
+    #message for input:
+    message = ("Please enter a number, " + sentinel + " to stop: ")
+    #asks for first number
+    num = input(message)
+
+
+    #sentinel loop to build the list
+    while num != sentinel:
+        #Adds number to list
+        numList.append(num)
+
+        #asks again for another number
+        num = input(message)
+
+    return numList
+
+
+#createIntList() takes an integer
+#Input:           a Min and Max Value
+#Output:          none
+def getValidInt(MIN, MAX):
+    #message for input:
+    message = ("Please enter a number between " + str(MIN) + " and " + str(MAX) + " (inclusive): ")
+
+    #asks for valid int
+    validInt = int(input(message))
+
+    #sentinel loop to ensure that number is valid
+    while validInt < MIN or validInt > MAX:
+        validInt = int(input(message))
+    
+    #returns value
+    return validInt
+
+#printMenu() prints out the menu options for the user
+#Input:      None
+#Output:     None
+def printMenu():
+    print(str(CREATE_A_LIST) + " - Create a list")
+    print(str(CHECK_SAME) + " - Check if list is all same")
+    print(str(CHECK_DIFFERENT) + " - Check if list is all different")
+    print(str(CHECK_SORTED) + " - Check if list is sorted")
+    print(str(EXIT) + " - Exit the program")
+
+#allTheSame() checks if the elements are the same
+#Input:       List
+#Output:      True or False
+
+def allTheSame(numList):
+
+    #sets variable to the first element of list
+    firstElement = numList[0]
+    
+    #sets for loop to check if an element doesn't match the first
+    for index in range(len(numList)):
+        #if they don't match, cancel function
+        if numList[index] != firstElement:
+            return False
+
+    #If False hasn't been returned then return True
+    return True
+
+#allDifferent() checks if a list is all different
+#Input:         List
+#Output:        True or False
+def allDifferent(numList):
+
+    for element in range(len(numList)):
+
+        for otherElement in range(len(numList)):
+
+            if numList[element] == numList[otherElement] and element != otherElement:
+                #They are not all the same
+                return False
+    return True
+    
+
+
+#sorted() checks if the list is in order from smallest to largest
+#Input:   List
+#Output:  True or false
+def sorted(numList):
+
+    for i in range(len(numList) - 1):
+        if int(numList[i]) > int(numList[int(i) + 1]):
+            return False
+
+    return True
+
+
+#Main function: has all other functions in it
+
+def main():
+
+
+    #sets initial num value
+    numList = []
+
+    #This prints out the menu
+    printMenu()
+
+    #This asks for a number
+    option = getValidInt(MIN, MAX)
+
+    #Loops that continues until 5 is pressed
+    while option != EXIT:
+
+        #runs list creation if they press 1
+        if option == CREATE_A_LIST:
+            #sets sentinel value
+            sentinel = input("What would you like your sentinel to be?: ")
+            numList = createIntList(sentinel)
+            print(numList)
+            
+
+        #runs alltheSame() if they press 2
+        elif option == CHECK_SAME:
+            sameResult = allTheSame(numList)
+
+            if sameResult == True:
+                print("The list " + str(numList) + " is all the same")
+            else:
+                print("The list " + str(numList) + " is not all the same")
+
+        #runs allDifferent() if they press 3
+        elif option == CHECK_DIFFERENT:
+            diffResult = allDifferent(numList)
+
+            if diffResult == True:
+                print("The list " + str(numList) + "is all different.")
+            else: 
+                print("The list " + str(numList) + "is not all different.")
+
+        #runs sorted() if they press 4
+        elif option == CHECK_SORTED:
+            sortResult = sorted(numList)
+         
+            if sortResult == True:
+                print("The list " + str(numList) + " is sorted.")
+            else:
+                print("The list " + str(numList) + " is not sorted.")
+
+        option = getValidInt(MIN, MAX)
+
+    
+    printMenu()
+
+    print("Thank you for using the List Info Checker")
+    
+main()
+
+def fakeMain():
+    
+
+    numList = createIntList()
+    print(numList)
+
+    y = getValidInt(MIN, MAX)
+    print(y)
+
+    p = allDifferent(numList)
+
+#fakeMain()

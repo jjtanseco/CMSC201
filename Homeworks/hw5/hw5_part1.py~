@@ -1,0 +1,28 @@
+# File: hw5_part1.py
+# Author: Joby Tanseco
+# Date: 10/6/16
+# Section: 18
+# E-mail: tanseco1@umbc.edu
+# Description:
+# This program creates a modulus table
+# Collaboration:
+# I did not collaborate with anyone on this assignment
+
+def main():
+
+    #defines variables
+    mod = input("Please enter the number to mod by: ")
+    limit = input("Please enter how high you'd like to go:" )
+    
+
+    for num in range(0, limit):
+        answer = num % mod
+        print(num, " % ", mod, " = ", answer)
+
+
+main()
+
+
+
+
+

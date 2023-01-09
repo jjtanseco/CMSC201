@@ -1,0 +1,14 @@
+# File: hw3_part1.py
+# Author: Joshua Julian Tanseco
+# Date: 09/24/16
+# Section: 18
+# E-mail: tanseco1@umbc.edu
+# Description:
+# This program determines whether a given number is negative or positive
+# Collaboration:
+# I did not collaborate with anyone on this assignment.
+
+def main():
+
+    #asks for number here
+    number = input("

@@ -1,0 +1,39 @@
+# File:        speedTicket.py 
+# Author:      Joshua Julian Tanseco 
+# Date:        9/27/16 
+# Section:     18 
+# E-mail:      tanseco1@umbc.edu 
+# Description: This program is made to help a police officer calculate the appropriate fine for driving over the 
+#               limit
+# Collaboration: During lab, collaboration between students is allowed, 
+#                although I understand I still must understand the material 
+#                and complete the assignment myself.
+
+def main():
+
+    speedLimit = input("What is the speed limit?: ")
+    speedLimit = int(speedLimit)
+
+    driverSpeed = input("How fast was the driver moving?: ")
+    driverSpeed = int(driverSpeed)
+
+    speeding = driverSpeed - speedLimit
+
+
+
+    if speeding < 10:
+        print("You receive no ticket... this time.")
+
+    elif speeding < 25:
+        print("You receive a ticket for a $75 fine.")
+
+    elif speeding < 30:
+        print("You receive a ticket for a $150 fine.")
+
+    else:
+        print("You receive a ticket for a $500 fine, and a mandatory court date.")
+
+    print("You were speeding by ", speeding, "mph.")
+
+main()
+

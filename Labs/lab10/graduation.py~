@@ -1,0 +1,39 @@
+# File:        graduation.py
+# Author:      YOUR NAME
+# Date:        TODAY'S DATE
+# Section:     YOUR SECTION NUMBER
+# E-mail:      USERNAME@umbc.edu
+# Description: YOUR DESCRIPTION GOES HERE AND HERE
+#              YOUR DESCRIPTION CONTINUED SOME MORE
+# Collaboration: During lab, collaboration between students is allowed,
+#                although I understand I still must understand the material
+#                and complete the assignment myself. 
+
+def main():
+
+
+    #opens file and reads it
+    roster = open("roster.txt", "r")
+    outFile = open("announcement.txt", "w")
+    
+    highGpa = 0.0
+
+    for line in roster:
+
+        line = line.strip()
+        major, gpa, lastName, firstName = line.split(";")
+
+        outFile.write(firstName + lastName + " is graduating with a degree in " + major+ "\n")
+ 
+        if float(gpa) > highGpa:
+            valedictorian = (firstName + " " + lastName)
+            highGpa = gpa
+
+    print("The valedictorian is " + valedictorian)
+    
+    outFile.close()
+    
+    
+
+
+main()

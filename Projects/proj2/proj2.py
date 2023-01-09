@@ -1,0 +1,154 @@
+# File: proj2.py
+# Author: Joby Tanseco
+# Date: 12/5/2016
+# Section: 18
+# E-mail: tanseco1@umbc.edu
+# Description:
+# This program asks for a maze, starting point, and solves the maze
+# Collaboration:
+# Collaboration was not allowed on this assignment
+
+#globals
+RIGHT = 0
+BOTTOM = 1
+LEFT = 2
+TOP = 3
+
+
+# readMaze():    interprets the information for the maze
+# INPUT():       the file Name of the maze
+# OUTPUT():      a Tuple containing a list of dimensions, a list of the 
+#                escape coordinates, a 3d list of the maze properties
+def readMaze(fileName):
+
+    #opens file
+    myFile = open(fileName, "r")
+
+    #sets values to first two lines
+    tempDimensions = myFile.readline().strip().split()
+    dimensions = []
+    for item in tempDimensions:
+        dimensions.append(int(item))
+
+    tempEscape = myFile.readline().strip().split()
+    escape = []
+    for item in tempEscape:
+        escape.append(int(item))
+    
+    #builds maze
+    rowAmount = int(dimensions[0])
+    columnAmount = int(dimensions[1])
+    
+    maze = []
+    for line in range(rowAmount):
+        tempRow = []
+        for line in range(columnAmount):
+            tempItem = myFile.readline().strip().split()
+            for index in range(len(tempItem)):
+                tempItem[index] = int(tempItem[index])
+            tempRow.append(tempItem)
+        maze.append(tempRow)
+
+    return escape, maze
+
+
+# askMaze:     asks for start coordinates and saves as list
+# INPUT:       a 3D list; the maze
+# OUTPUT:      a list; the start coordinates
+def askStart(maze):
+
+    colAmount = len(maze[1])
+    rowAmount = len(maze)
+
+    #asks for start coordinate
+    startRow = int(input("Please enter a starting row: "))
+
+    while startRow < 0 or startRow > (rowAmount - 1):
+        rowMessage = ("Invalid, enter a number between 0 and " +\
+                          str(rowAmount - 1) + " (inclusive): ")
+        startRow = int(input(rowMessage))
+
+    startCol = int(input("Please enter a starting column: "))
+
+    while startCol < 0 or startCol > (colAmount - 1):
+        colMessage = ("Invalid, enter a number between 0 and " +\
+                          str(colAmount - 1) + " (inclusive): ")
+        startCol = int(input(colMessage))
+
+    return [startRow, startCol]
+
+
+# checkSolve():    Checks if you can or can't solve it
+# INPUT:         a 3d list, the maze; a list, the escape coordinates;
+# OUTPUT:        true or false
+def checkSolve(maze, start):
+
+    for wall in range(4):
+        if maze[start[0]][start[0]][wall] == 0:
+            return True
+    return False
+
+
+# searchMaze():  recursive function that solves maze
+# INPUT:         a 3d list, the maze; a list, the escape coordinates;
+#                and another list, the start coordinate
+# OUTPUT:        a 2d list; the maze path
+def searchMaze(maze, escape, start):
+
+    #initializes list
+    mazePath = []
+    currentSpot = [start[0], start[1]]
+    mazePath.append(currentSpot)
+
+    #base case: the current spot is in the escape spot
+    if start[0] == escape[1] and start[1] == escape[1]:
+        return mazePath
+
+    #recursive case 1: RIGHT is open
+    if maze[start[0]][start[1]][RIGHT] == 0:
+        start[1] += 1
+        mazePath.append(searchMaze(maze, escape, start))
+        
+    #recursive case 2: BOTTOM is open
+    elif maze[start[0]][start[1]][BOTTOM] == 0:
+        start[0] += 1
+        mazePath.append(searchMaze(maze, escape, start))
+
+    #recursive case 3: LEFT is open
+    elif maze[start[0]][start[1]][LEFT] == 0:
+        start[1] -= 1
+        mazePath.append(searchMaze(maze, escape, start))
+
+    #recursive case 4: TOP is open
+    elif maze[start[0]][start[1]][TOP] == 0:
+        start[0] -= 1
+        mazePath.append(searchMaze(maze, escape, start))
+
+    #recursive case 5: Dead end
+   #else:
+        #code to bring you back a step.
+
+
+
+
+def main():
+
+    #intro
+    print("Welcome to the Maze Solver!")
+    fileName = input("Please enter the filename of the maze: ")
+    (escape, maze) = readMaze(fileName)
+    start = askStart(maze)
+
+    #checks if maze is solvable:
+    solvable = checkSolve(maze, start)
+
+    if solvable: 
+
+        print("Solution Found!:")
+        #actual maze solving here
+        mazePath = searchMaze(maze, escape, start)
+        print(mazePath)
+
+    
+
+main()

@@ -1,0 +1,52 @@
+Question 1
+
+1.remove all books currently on the shelf off of the shelf and place on floor
+2.pick up a book off of the floor
+3.place on shelf
+4.pick up another book off of the floor
+5.If book title's author alphabetically proceeds that of  book to the far left:
+6. Place book to the left of that far left already placed book
+7.Else
+8. If there is placed book to left, 
+9.  Go back to step 5 for that placed book
+10. Else 
+11.  place held book to the right of said already placed book
+12.Go back to step 4 until complete
+
+Question 2
+
+1.Identify the first letter of the word
+2.Turn to Section of the dictionary that's first letter matches with that of te given word
+3.examine first word of the section
+4.if word matches given word
+5. finish
+6.else
+7. If section is not done
+8.  move to next word and go back to step 4
+9. else
+10. word is not in this dictionary
+
+Question 3
+
+1.Examine the last letter of the  initial word (word 1)
+2.Write it as the next letter of the new word (word 2)
+3.If the letter examined was the last letter, continue to step 6.
+4.Else, Examine the letter before the previously examined letter of word1
+5.go back to step 2
+6.Once word2 is complete, examine the first letter of word1 and the last lette of word 2.
+7.If letters do not match, it is not a palindrome, end here
+8.Else, examine the next letter of word1 and the previous letter of word 2.
+9.Go back to step 7 until you there are either no more letters to examine or if step 7 is true. End program.
+
+Question 4
+
+1.pour mix into bowl
+2.pour water into bowl
+3.with a spoon, mix water and bowl. continue until mix is consistant.
+4.open waffle maker
+5.With a cup, scoop mix out of bowl and into waffle maker.
+6.Close waffle maker.
+7.In five minutes, open waffle maker.
+8.remove waffle with a fork and place on a plate.
+9.Go back to step 4 until you have desired amount of waffles.
+10. 

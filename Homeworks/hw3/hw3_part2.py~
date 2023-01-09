@@ -1,0 +1,46 @@
+# File: hw3_part2.py
+# Author: Joshua Julian Tanseco
+# Date: 9/25/16
+# Section: 1
+# E-mail: tanseco1@umbc.edu
+# Description:
+# This program attempts to determine what breed of dog you have
+# Collaboration:
+# I did not collaborate with anyone on this assignment.
+
+def main():
+
+    #Asks user first if the dog is big
+    size = input("Is the dog a big dog? ")
+    size = str(size)
+
+    if size == "yes":
+    #Asks the user if the dog has a fluffy coat
+        fluff = input("Does the dog have a fluffy coat?" )
+        fluff = str(fluff)
+
+        if fluff == "yes":
+            print("Your dog is a Samoyed")
+
+        if fluff == "no":
+            pointyEars = input("Does the dog have ears that stick up? ")
+            pointyEars = str(pointyEars)
+
+            if pointyEars == "yes":
+                print("The dog is a German Shepard")
+
+            if pointyEars == "no":
+                print("The dog is a Borzoi")
+
+    if size == "no":
+        curlyTail = input("Does the dog have a curly tail? ")
+        curlyTail = str(curlyTail)
+    
+        if curlyTail == "yes":
+            print("The dog is a Shiba Inu")
+        if curlyTail == "no":
+            print("The dog is a Corgi")
+
+main()
+        
+        

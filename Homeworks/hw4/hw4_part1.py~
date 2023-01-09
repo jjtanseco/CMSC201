@@ -1,0 +1,31 @@
+# File: hw4_part1.py
+# Author: Joby Tanseco
+# Date: 10/4/16
+# Section: 18
+# E-mail: tanseco1@umbc.edu
+# Description:
+# This program will ask for an input repeatedly until it is valid
+# Collaboration:
+# I did not collaborate with anyone on this assignment
+
+def main():
+    
+    MIN = 4
+    MAX = 12
+
+    userName = ""
+    userName = input("Please enter a Username: ")
+
+
+    while len(userName) < MIN or len(userName) > MAX:
+        if len(userName) < MIN:
+            print("That username is too short, try again.")
+        elif len(userName) > MAX:
+            print("That username is too long, try again.")
+        userName = "basic"
+        userName = input("Username must be 4-12 characters: ")
+    print("Thank you for choosing ", userName, "!")
+
+
+
+main()

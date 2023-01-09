@@ -1,0 +1,25 @@
+# File: hw4_part2.py
+# Author: Joby Tanseco
+# Date: 10/4/16
+# Section: 18
+# E-mail: tanseco1@umbc.edu
+# Description:
+# THIS PROGRAM GIVES THE REMAINDER OF TWO NUMBERS WITHOUT THE MOD OPERATOR
+# Collaboration:
+# I did not collaborate with anyone on this assignment
+
+def main():
+
+    firstNum = input("Please enter first number: ")
+    
+    secondNum = input("Please enter the second number: ")
+    secondNum = int(secondNum)
+    finalNum = int(firstNum)
+    
+    while finalNum >= secondNum:
+        finalNum = finalNum - secondNum
+    
+
+    print(firstNum, "%", secondNum, " = ", finalNum)
+
+main()

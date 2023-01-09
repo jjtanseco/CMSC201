@@ -1,0 +1,74 @@
+# File: hw6.py
+# Author: Joby Tanseco
+# Date: 10/25/2016
+# Section: 18
+# E-mail: tanseco1@umbc.edu
+# Description:
+# This program has several different functions
+# Collaboration:
+# Collaboration was not allowed for this assignment
+
+#Creates function to add up numbers in each list.
+def summation(numList):
+
+
+    #Initializes total
+    total = 0
+
+    #Adds each number in list to total
+    for i in range(len(numList)):
+        total += numList[i]
+    #returns total value
+    return total
+
+
+def multiply(numList):
+
+    x = 1
+    for i in range(len(numList)):
+        x = x * int(numList[i])
+    return x
+
+def createIntList():
+    
+    #Asks user how many lists to make
+    listAmount = int(input("How many Lists do you want to make? "))
+
+    #Build each List:
+    for x in range(listAmount):
+        print("You are creating list #" + str(x + 1))
+        numList = []
+
+        sentinel = int(input("What do you want your sentinel to be? "))
+        message = ("Please enter a number (" + str(sentinel) + " to stop): ")  
+
+
+        #establishes input value
+        num = int(input(message))
+
+        #Sentinel loop to add numbers to list
+        while num != sentinel:
+            numList.append(num)
+            num = int(input(message))
+
+        print("For the list ", numList)
+        return numList
+
+
+    
+def main():
+    numList = createIntList()
+    
+    #runs adding function
+    numSum = summation(numList)
+        
+    #runs multiplication function
+    numProduct = multiply(numList)
+        
+
+    #prints sum and product
+    print("The summation is", numSum)
+    print("The product is", numProduct)
+
+
+main()
